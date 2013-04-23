@@ -17,10 +17,11 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" android:logo="@drawable/ic_launcher" android:name="ShellMS">
+        android:theme="@style/AppTheme"
+        android:logo="@drawable/ic_launcher"
+        android:name="ShellMS">
         <activity
-            android:name="com.android.shellms.MainActivity"
-            android:label="@string/app_name" >
+            android:name="com.android.shellms.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -28,7 +29,8 @@
         </activity>
         <service
             android:enabled="true" 
-            android:name="com.android.shellms.sendSMS" >
+            android:name="com.android.shellms.sendSMS" 
+            android:exported="true" >
         </service>
     </application>
 </manifest>

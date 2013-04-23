@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity"
+    tools:ignore="HardcodedText" >
 
     <TextView
         android:id="@+id/textView2"
@@ -15,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Thanks for using. visit www.fhstp.ac.at" />
+        android:text="Thanks for using. visit https://github.com/kiz56fvdw2e/ShellMS" />
 
     <TextView
         android:id="@+id/textView3"
@@ -45,12 +46,12 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView5"
-        android:layout_below="@+id/textView8"
-        android:text="Add &quot; --esn secret &quot; to supress the storing in the SMS outbox."
+        android:layout_below="@+id/textView5"
+        android:text="or ... -e contact &quot;Contact&apos;s DISPLAY NAME&quot; -e msg &quot;MSG&quot;"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
@@ -59,18 +60,25 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
-        android:layout_marginTop="22dp"
-        android:text="Usage with numbers"
+        android:text="Usage with numbers or names"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView9"
-        android:layout_below="@+id/textView5"
-        android:layout_marginTop="17dp"
-        android:text="Secret Mode"
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_below="@+id/textView6"
+        android:text="Special"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView7"
+        android:layout_below="@+id/textView7"
+        android:text="Add &quot; --esn secret &quot; to supress the storing in the SMS outbox. &quot; --esn debug &quot; for Debug Mode."
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

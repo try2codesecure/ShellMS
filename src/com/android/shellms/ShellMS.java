@@ -10,6 +10,8 @@ package com.android.shellms;
 import android.app.Application;
 
 public class ShellMS extends Application {
+	
 
+	protected void onStart() {
+	}
 }
-
