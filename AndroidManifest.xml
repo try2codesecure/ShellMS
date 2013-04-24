@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.shellms"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0" 
+    android:installLocation="auto" >
 
     <uses-permission android:name="android.permission.SEND_SMS" />
 	<uses-permission android:name="android.permission.READ_SMS" />
