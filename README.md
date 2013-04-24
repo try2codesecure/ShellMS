@@ -48,7 +48,7 @@ Debugging:
 	adb logcat | grep com.android.shellms
 
 Project's HomeSweetHome:
-	https://github.com/kiz56fvdw2e/ShellMS
+	https://github.com/try2codesecure/ShellMS
 
 Templates:
  * simple shell "template_sendsms.sh"
