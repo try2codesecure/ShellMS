@@ -8,34 +8,36 @@ If you don't know what ADB or SDK is you defintely don't need this app.
 For the others it's useful tool to speed up messaging when you're working on your computer.
 
 License:
-	Copyleft 2013, by Rainer is101024@fhstp.ac.at
-	University of Applied Sciences St.Pölten - http://www.fhstp.ac.at
-	This file is part of ShellMS (GPLv3 - https://www.gnu.org/licenses/gpl-3.0.html)
-	ShellMS is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License 
-	 as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-	ShellMS is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-	 without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-	See the GNU General Public License for more details.
+
+Copyleft 2013, by Rainer is101024@fhstp.ac.at
+University of Applied Sciences St.Pölten - http://www.fhstp.ac.at
+This file is part of ShellMS (GPLv3 - https://www.gnu.org/licenses/gpl-3.0.html)
+ShellMS is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License 
+ as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+ShellMS is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
 
 Usage:
  * with mobile phone numbers:
-	adb shell am startservice -n com.android.shellms/.sendSMS -e contact +123456789 -e msg "Message"
+	- adb shell am startservice -n com.android.shellms/.sendSMS -e contact +123456789 -e msg "Message"
  * with display names from phone:
-	adb shell am startservice -n com.android.shellms/.sendSMS -e contact "Contact's DISPLAY NAME" -e msg "MSG"
+	- adb shell am startservice -n com.android.shellms/.sendSMS -e contact "Contact's DISPLAY NAME" -e msg "MSG"
 
 Special features:
  * Secret SMS (useful when you send many sms):
 	append " --esn secret " to the end of the service call above
 
 Used permissions:
-	android.permission.SEND_SMS => surprisingly to send sms
-	android.permission.READ_SMS => to store in the outbox
-	android.permission.WRITE_SMS => to store in the outbox
-	android.permission.READ_CONTACTS => to get the names from the phone
+ * android.permission.SEND_SMS => surprisingly to send sms
+ * android.permission.READ_SMS => to store in the outbox
+ * android.permission.WRITE_SMS => to store in the outbox
+ * android.permission.READ_CONTACTS => to get the names from the phone
 
 Hints:
-	When you use the app with names, the programm will only searching if it matches the phone's DisplayName from your contact.
-	If the name matches then it searches ONLY for mobile phone numbers. Other numbers will not be processed.
+
+When you use the app with names, the programm will only searching if it matches the phone's DisplayName from your contact.
+If the name matches then it searches ONLY for mobile phone numbers. Other numbers will not be processed.
 
 Debugging:
  * Debug Mode (hopefully, you'll don't need it)
@@ -50,16 +52,14 @@ Project's HomeSweetHome:
 
 Templates:
  * simple shell template:
-	sendsms.sh
-	####################################
-	#!/bin/bash
-	# ShellMS Script
-	if [ $# != 2 ];then
-		echo "Usage: $0 \"Contact's DISPLAY NAME or Phone Number\" \"Your message\""
-		exit
-	else
-		adb shell am startservice -n com.android.shellms/.sendSMS -e contact "$1" -e msg "$2" 1>/dev/null
-	fi
-	####################################
 
+sendsms.sh
 
+#!/bin/sh
+# ShellMS Script
+if [ $# != 2 ];then
+echo "Usage: $0 \"Contact's DISPLAY NAME or Phone Number\" \"Your message\""
+exit
+else
+adb shell am startservice -n com.android.shellms/.sendSMS -e contact "$1" -e msg "$2" 1>/dev/null
+fi
