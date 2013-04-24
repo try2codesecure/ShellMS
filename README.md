@@ -26,7 +26,7 @@ Usage:
 
 Special features:
  * Secret SMS (useful when you send many sms):
-	append " --esn secret " to the end of the service call above
+	- append " --esn secret " to the end of the service call above
 
 Used permissions:
  * android.permission.SEND_SMS => surprisingly to send sms
@@ -41,7 +41,7 @@ If the name matches then it searches ONLY for mobile phone numbers. Other number
 
 Debugging:
  * Debug Mode (hopefully, you'll don't need it)
-	append " --esn debug " to the end of the service call above. Enables more output to logcat
+	- append " --esn debug " to the end of the service call above. Enables more output to logcat
  * Use logcat to see the service output
 	adb logcat | grep ShellMS_Service_sendSMS
  * or the main outpput
