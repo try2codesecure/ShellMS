@@ -51,15 +51,4 @@ Project's HomeSweetHome:
 	https://github.com/kiz56fvdw2e/ShellMS
 
 Templates:
- * simple shell template:
-
-sendsms.sh
-
-#!/bin/sh
-# ShellMS Script
-if [ $# != 2 ];then
-echo "Usage: $0 \"Contact's DISPLAY NAME or Phone Number\" \"Your message\""
-exit
-else
-adb shell am startservice -n com.android.shellms/.sendSMS -e contact "$1" -e msg "$2" 1>/dev/null
-fi
+ * simple shell "template_sendsms.sh"
