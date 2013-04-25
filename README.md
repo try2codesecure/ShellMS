@@ -20,9 +20,9 @@ See the GNU General Public License for more details.
 
 Usage:
  * with mobile phone numbers:
-	- adb shell am startservice -n com.android.shellms/.sendSMS -e contact +123456789 -e msg "Message"
+	- adb shell am startservice --user 0 -n com.android.shellms/.sendSMS -e contact +123456789 -e msg "Message"
  * with display names from phone:
-	- adb shell am startservice -n com.android.shellms/.sendSMS -e contact "Contact's DISPLAY NAME" -e msg "MSG"
+	- adb shell am startservice --user 0 -n com.android.shellms/.sendSMS -e contact "Contact's DISPLAY NAME" -e msg "MSG"
 
 Special features:
  * Secret SMS (useful when you send many sms):
@@ -43,9 +43,10 @@ Debugging:
  * Debug Mode (hopefully, you'll don't need it)
 	- append " --esn debug " to the end of the service call above. Enables more output to logcat
  * Use logcat to see the service output
-	adb logcat | grep ShellMS_Service_sendSMS
+	- adb logcat | grep ShellMS_Service_sendSMS 
+	- adb logcat -d -s -C ShellMS_Service_sendSMS:*
  * or the main outpput
-	adb logcat | grep com.android.shellms
+	- adb logcat | grep com.android.shellms
 
 Project's HomeSweetHome:
 	https://github.com/try2codesecure/ShellMS

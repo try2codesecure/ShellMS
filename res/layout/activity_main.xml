@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView4"
         android:layout_below="@+id/textView4"
-        android:text="adb shell am startservice -n com.android.shellms/.sendSMS -e contact +123456789 -e msg &quot;Message&quot;"
+        android:text="adb shell am startservice --user 0 -n com.android.shellms/.sendSMS -e contact +123456789 -e msg &quot;Message&quot;"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
