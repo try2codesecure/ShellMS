@@ -49,7 +49,7 @@ Debugging:
 	- adb logcat | grep com.android.shellms
 
 Project's HomeSweetHome:
-	https://github.com/try2codesecure/ShellMS
+ * https://github.com/try2codesecure/ShellMS
 
 Templates:
  * simple shell "template_sendsms.sh"
