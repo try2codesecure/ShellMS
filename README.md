@@ -18,6 +18,9 @@ ShellMS is distributed in the hope that it will be useful, but WITHOUT ANY WARRA
  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 See the GNU General Public License for more details.
 
+APK is availible on F-Droid:
+ * http://f-droid.org/repository/browse/?fdid=com.android.shellms
+
 Usage:
  * with mobile phone numbers:
 	- adb shell am startservice --user 0 -n com.android.shellms/.sendSMS -e contact +123456789 -e msg "Message"
@@ -53,3 +56,10 @@ Project's HomeSweetHome:
 
 Templates:
  * simple shell "template_sendsms.sh"
+
+Roadmap (planned improvements in next version):
+ * improve the sendsms function => with reply value if it's sent correct
+ * improve the serach for telephone numbers in address book
+
+Bug found? PLEASE report it =>
+ * https://github.com/try2codesecure/ShellMS/issues
