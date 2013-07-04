@@ -9,15 +9,16 @@ For the others it's useful tool to speed up messaging when you're working on you
 
 Changelog:
 
- IMPORTANT NOTE: If you're using a new cyanogenmod version =>
-	!! Please disable Privacy Guard for ShellMS !!
+ IMPORTANT NOTE:
+If you're using a new cyanogenmod version => ! disable Privacy Guard for ShellMS !
 (otherwise the app can't search in your phonebook for the contact-names)
 
  v1.1 (20130704)
-	* fixed crash when sending long SMS
-	* improved shell template
+ * fixed crash when sending long SMS
+ * improved shell template
+ 
  v1.0 
-	* First Release
+ * First Release
 
 License:
 
