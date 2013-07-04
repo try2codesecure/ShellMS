@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Thanks for using. visit https://github.com/try2codesecure/ShellMS" />
+        android:text="Thanks for using. visit https://github.com/try2codesecure/ShellMS for Shell templates" />
 
     <TextView
         android:id="@+id/textView3"

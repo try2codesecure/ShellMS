@@ -8,8 +8,11 @@
 
 package com.android.shellms;
 
+import java.util.ArrayList;
+
 import android.net.Uri;
 import android.os.Bundle;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsManager;
@@ -106,9 +109,9 @@ public class sendSMS extends Service {
 						sendsms(contact, msg, !SECRET);
 						Log.i(TAG, "Sent SMS to contact: " + contact );
 					} else	{
-						Log.e(TAG, "NO MESSAGE WILL BE SENT IN DEBUG MODE" );
-						Log.e(TAG, "Contact: " + contact );
-						Log.e(TAG, "Message: " + msg);
+						Log.d(TAG, "NO MESSAGE WILL BE SENT IN DEBUG MODE" );
+						Log.d(TAG, "Contact: " + contact );
+						Log.d(TAG, "Message: " + msg);
 					}
 				} else	{
 					Log.e(TAG, "Unknown Error occoured with contact: " + contact);
@@ -202,16 +205,34 @@ public class sendSMS extends Service {
 	    }
 	}
 	
-	
 	// This function sends the sms with the SMSManager
 	private void sendsms(String phoneNumber, String message, Boolean AddtoSent)	{
-		SmsManager sms = SmsManager.getDefault();
-        sms.sendTextMessage(phoneNumber, null, message, null, null);
-		if (AddtoSent)	{
-			addMessageToSent(phoneNumber, message);
-		}
-	}
-
+		String SENT = "SMS_SENT";
+        String DELIVERED = "SMS_DELIVERED";
+ 
+        ArrayList<PendingIntent> sentPendingIntents = new ArrayList<PendingIntent>();
+        ArrayList<PendingIntent> deliveredPendingIntents = new ArrayList<PendingIntent>();
+        
+        PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, new Intent(SENT), 0);
+        PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0, new Intent(DELIVERED), 0);
+ 
+	    try {
+	    	SmsManager sms = SmsManager.getDefault();
+	        ArrayList<String> msgparts = sms.divideMessage(message);
+	        for (int i = 0; i < msgparts.size(); i++) {
+	            sentPendingIntents.add(i, sentPI);
+	            deliveredPendingIntents.add(i, deliveredPI);
+	        }
+	        sms.sendMultipartTextMessage(phoneNumber, null, msgparts, sentPendingIntents, deliveredPendingIntents);
+			if (AddtoSent)	{
+				addMessageToSent(phoneNumber, message);
+			}
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        Log.e(TAG, "undefined Error: SMS sending failed ... please REPORT to ISSUE Tracker");
+	    }
+    }		
+		
 	// This function add's the sent sms to the SMS sent folder
 	private void addMessageToSent(String phoneNumber, String message) {
         ContentValues sentSms = new ContentValues();
@@ -220,8 +241,8 @@ public class sendSMS extends Service {
         
         ContentResolver contentResolver = getContentResolver();
         contentResolver.insert(SENT_MSGS_CONTET_PROVIDER, sentSms);
-    }
-	
+	}
+
 	@Override
 	public IBinder onBind(Intent intent) {
 		// TODO Auto-generated method stub

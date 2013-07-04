@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.shellms"
     android:versionCode="1"
-    android:versionName="1.0" 
+    android:versionName="1.1" 
     android:installLocation="auto" >
 
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -28,6 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
         <service
             android:enabled="true"
             android:name=".sendSMS"

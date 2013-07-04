@@ -4,8 +4,20 @@ ShellMS
 ShellMS - Android Debug Bridge Shell SMS Application
 
 ShellMS is the simplest and easiest ADB Shell Messaging Application.
-If you don't know what ADB or SDK is you defintely don't need this app.
+If you don't know what ADB or SDK is you definitely don't need this app.
 For the others it's useful tool to speed up messaging when you're working on your computer.
+
+Changelog:
+
+ IMPORTANT NOTE: If you're using a new cyanogenmod version =>
+	!! Please disable Privacy Guard for ShellMS !!
+(otherwise the app can't search in your phonebook for the contact-names)
+
+ v1.1 (20130704)
+	* fixed crash when sending long SMS
+	* improved shell template
+ v1.0 
+	* First Release
 
 License:
 
@@ -56,9 +68,10 @@ Project's HomeSweetHome:
 
 Templates:
  * simple shell "template_sendsms.sh"
+ * for multiple contacts "template_sendsms_multiple-contacts.sh"
 
-Roadmap (planned improvements in next version):
- * improve the sendsms function => with reply value if it's sent correct
+Roadmap / TODO (planned improvements in the future):
+ * improve the sendsms function => with reply value if it's sent correct (BroadcastReceivers)
  * improve the serach for telephone numbers in address book
 
 Bug found? PLEASE report it =>
