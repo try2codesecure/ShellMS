@@ -9,16 +9,16 @@ For the others it's useful tool to speed up messaging when you're working on you
 
 Changelog:
 
- IMPORTANT NOTE:
+IMPORTANT NOTE:
 If you're using a new cyanogenmod version => ! disable Privacy Guard for ShellMS !
 (otherwise the app can't search in your phonebook for the contact-names)
 
- v1.1 (20130704)
+v1.1 (20130704)
  * fixed crash when sending long SMS
  * improved shell template
- 
- v1.0 
- * First Release
+
+v1.0 (20130425)
+ * first release
 
 License:
 
@@ -64,9 +64,6 @@ Debugging:
  * or the main outpput
 	- adb logcat | grep com.android.shellms
 
-Project's HomeSweetHome:
- * https://github.com/try2codesecure/ShellMS
-
 Templates:
  * simple shell "template_sendsms.sh"
  * for multiple contacts "template_sendsms_multiple-contacts.sh"
@@ -74,6 +71,9 @@ Templates:
 Roadmap / TODO (planned improvements in the future):
  * improve the sendsms function => with reply value if it's sent correct (BroadcastReceivers)
  * improve the serach for telephone numbers in address book
+
+Project's Source Code & HomeSweetHome:
+ * https://github.com/try2codesecure/ShellMS
 
 Bug found? PLEASE report it =>
  * https://github.com/try2codesecure/ShellMS/issues
