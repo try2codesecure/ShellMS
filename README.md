@@ -1,4 +1,4 @@
-![ShellMS Logo](res/drawable-hdpi/ic_launcher.png "ShellMS") ShellMS 
+![ShellMS Logo](res/drawable-mdpi/ic_launcher.png "ShellMS") ShellMS 
 =======
 
 ShellMS - Android Debug Bridge Shell SMS Application
