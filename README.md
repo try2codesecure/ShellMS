@@ -1,5 +1,7 @@
 ShellMS
 =======
+![alt text](blob/master/stuff/logo_shellms.png "ShellMS")
+
 
 ShellMS - Android Debug Bridge Shell SMS Application
 
