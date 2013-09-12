@@ -38,9 +38,6 @@ Templates:
  * simple shell "template_sendsms.sh"
  * for multiple contacts "template_sendsms_multiple-contacts.sh"
 
-Project's Source Code & HomeSweetHome:
- * https://github.com/try2codesecure/ShellMS
-
 Donation / Spenden (via Bitcoin):
  * Bitcoins will be really appreciated: 1Mqdg9HAfLiPconDcEmsvdGoS6YeALMrdJ
 
@@ -55,7 +52,7 @@ v1.1 (20130704)
 v1.0 (20130425)
  * first release
 
-License:
+License: GPLv3+
 
     ShellMS - Android Debug Bridge Shell SMS Application
     Copyright (C) 2013 by Rainer
@@ -79,7 +76,7 @@ Bug found? PLEASE report it =>
  * https://github.com/try2codesecure/ShellMS/issues
 
 Debugging:
- * Debug Mode (hopefully, you'll don't need it)
+ * Debug Mode (hopefully, you'll never need it)
 	- append " --esn debug " to the end of the service call above. Enables more output to logcat
  * Use logcat to see the service output
 	- adb logcat | grep ShellMS_Service_sendSMS 
@@ -90,3 +87,5 @@ Debugging:
 Roadmap / to do (planned improvements in the future):
  * improve the sendsms function => with reply value if it's sent correct (BroadcastReceivers)
  * improve the serach for telephone numbers in address book
+ * template for windows (power)shell
+ * password secured service execution => right now, every user/process on the phone can execute it.
