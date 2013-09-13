@@ -35,13 +35,8 @@ Used permissions:
  * android.permission.READ_CONTACTS => to get the names from the phone
 
 Templates:
- * simple shell "template_sendsms.sh"
-
-	![template_sendsms.sh](template_sendsms.sh "template_sendsms.sh")
-
- * for multiple contacts "template_sendsms_multiple-contacts.sh"
-
-	![template_sendsms_multiple-contacts.sh](template_sendsms_multiple-contacts.sh "template_sendsms_multiple-contacts.sh")
+ * simple shell "![template_sendsms.sh](template_sendsms.sh "template_sendsms.sh")"
+ * for multiple contacts "![template_sendsms_multiple-contacts.sh](template_sendsms_multiple-contacts.sh "template_sendsms_multiple-contacts.sh")"
 
 Donation / Spenden (via Bitcoin):
  * Bitcoins will be really appreciated: 1Mqdg9HAfLiPconDcEmsvdGoS6YeALMrdJ
