@@ -37,6 +37,8 @@ Used permissions:
 Templates:
  * simple shell "![template_sendsms.sh](template_sendsms.sh "template_sendsms.sh")"
  * for multiple contacts "![template_sendsms_multiple-contacts.sh](template_sendsms_multiple-contacts.sh "template_sendsms_multiple-contacts.sh")"
+ * if you need more scripts => https://github.com/fbreitwieser/sendsms-scripts
+	perl scripts with improved contacts quering and displays recent conversations (GPLv2), thanks to Florian Breitwieser
 
 Donation / Spenden (via Bitcoin):
  * Bitcoins will be really appreciated: 1Mqdg9HAfLiPconDcEmsvdGoS6YeALMrdJ
