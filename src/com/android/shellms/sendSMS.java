@@ -44,13 +44,12 @@ public class sendSMS extends Service {
 	private static final String TELEPHON_NUMBER_FIELD_NAME = "address";
     private static final String MESSAGE_BODY_FIELD_NAME = "body";
     private static final Uri SENT_MSGS_CONTET_PROVIDER = Uri.parse("content://sms/sent");
+	boolean DEBUG = false;	// debug mode, display additional output, sends no sms.
 	
 	// This is the start function for the service.
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-
-		boolean SECRET = false;	// for secret mode => dont't save sent sms to sent folder. 
-		boolean DEBUG = false;	// debug mode, display additional output, sends no sms.
+		boolean SECRET = false;	// for secret mode => dont't save sent sms to sent folder.
 		String contact = null;
 		String val_num = null;	// validated Number
 		String msg = null;		// message
@@ -218,33 +217,30 @@ public class sendSMS extends Service {
 	}
 	
 	// This function sends the sms with the SMSManager
-	private void sendsms(String phoneNumber, String message, Boolean AddtoSent)	{
-		String SENT = "SMS_SENT";
-        String DELIVERED = "SMS_DELIVERED";
- 
-        ArrayList<PendingIntent> sentPendingIntents = new ArrayList<PendingIntent>();
-        ArrayList<PendingIntent> deliveredPendingIntents = new ArrayList<PendingIntent>();
-        
-        PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, new Intent(SENT), 0);
-        PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0, new Intent(DELIVERED), 0);
- 
-	    try {
+	private void sendsms(final String phoneNumber, final String message, final Boolean AddtoSent)	{
+		try {
+			String SENT = TAG + "_SMS_SENT";
+			Intent myIntent = new Intent(SENT);
+	    	PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, myIntent, 0);
+	        
 	    	SmsManager sms = SmsManager.getDefault();
 	        ArrayList<String> msgparts = sms.divideMessage(message);
-	        for (int i = 0; i < msgparts.size(); i++) {
-	            sentPendingIntents.add(i, sentPI);
-	            deliveredPendingIntents.add(i, deliveredPI);
+	    	ArrayList<PendingIntent> sentPendingIntents = new ArrayList<PendingIntent>();
+	    	int msgcount = msgparts.size();
+
+	    	for (int i = 0; i < msgcount; i++) {
+	            sentPendingIntents.add(sentPI);
 	        }
-	        sms.sendMultipartTextMessage(phoneNumber, null, msgparts, sentPendingIntents, deliveredPendingIntents);
-			if (AddtoSent)	{
+
+	    	sms.sendMultipartTextMessage(phoneNumber, null, msgparts, sentPendingIntents, null);
+	        if (AddtoSent)	{
 				addMessageToSent(phoneNumber, message);
 			}
-	    } catch (Exception e) {
+		} catch (Exception e) {
 	        e.printStackTrace();
 	        Log.e(TAG, "undefined Error: SMS sending failed ... please REPORT to ISSUE Tracker");
 	    }
-    }		
-		
+    }
 	// This function add's the sent sms to the SMS sent folder
 	private void addMessageToSent(String phoneNumber, String message) {
         ContentValues sentSms = new ContentValues();
@@ -254,7 +250,6 @@ public class sendSMS extends Service {
         ContentResolver contentResolver = getContentResolver();
         contentResolver.insert(SENT_MSGS_CONTET_PROVIDER, sentSms);
 	}
-
 	@Override
 	public IBinder onBind(Intent intent) {
 		// TODO Auto-generated method stub

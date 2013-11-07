@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.shellms"
-    android:versionCode="2"
-    android:versionName="1.1" 
+    android:versionCode="3"
+    android:versionName="1.2" 
     android:installLocation="auto" >
 
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -12,7 +12,7 @@
     
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="18" />
+        android:targetSdkVersion="19" />
     
     <application
         android:allowBackup="true"
@@ -28,7 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <service
             android:enabled="true"
             android:name=".sendSMS"

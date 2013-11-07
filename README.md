@@ -24,7 +24,7 @@ Special features:
 
 Hints / Notes:
  * If you're using a new cyanogenmod version => ! disable Privacy Guard for ShellMS !
-(otherwise the app can't search in your phonebook for the contact-names)
+(otherwise the app can't search in your phonebook for the contact-names and can't add sent messages to the outbox)
  * When you use the app with names, the programm will only searching if it matches the phone's DisplayName from your contact.
 If the name matches then it searches ONLY for mobile phone numbers. Other numbers will not be processed.
 
@@ -46,6 +46,9 @@ Donation / Spenden (via Bitcoin):
 ![Bitcoin](./stuff/bitcoin.png "BTC")
 
 Changelog:
+
+v1.2 (20131107)
+ * disabled the delivery reports for sent sms - it produces costs for some providers.
 
 v1.1 (20130704)
  * fixed crash when sending long SMS
@@ -88,6 +91,5 @@ Debugging:
 
 Roadmap / to do (planned improvements in the future):
  * improve the sendsms function => with reply value if it's sent correct (BroadcastReceivers)
- * improve the serach for telephone numbers in address book
  * template for windows (power)shell
  * password secured service execution => right now, every user/process on the phone can execute it.
