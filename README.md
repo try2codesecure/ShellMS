@@ -40,11 +40,6 @@ Templates:
  * if you need more scripts => https://github.com/fbreitwieser/sendsms-scripts
 	perl scripts with improved contacts querying and displays recent conversations (GPLv2), thanks to Florian Breitwieser
 
-Donation / Spenden (via Bitcoin):
- * Bitcoins will be really appreciated: 1Mqdg9HAfLiPconDcEmsvdGoS6YeALMrdJ
-
-![Bitcoin](./stuff/bitcoin.png "BTC")
-
 Changelog:
 
 v1.2 (20131107)
