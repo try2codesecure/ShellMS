@@ -1,7 +1,5 @@
 /*	
     ShellMS - Android Debug Bridge Shell SMS Application
-    Copyright (C) 2013 by Rainer
-    is101024@fhstp.ac.at
 	https://github.com/try2codesecure/ShellMS
 	
     This program is free software: you can redistribute it and/or modify

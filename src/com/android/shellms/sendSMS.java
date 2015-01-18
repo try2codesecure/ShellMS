@@ -1,7 +1,5 @@
 /*	
     ShellMS - Android Debug Bridge Shell SMS Application
-    Copyright (C) 2013 by Rainer
-    is101024@fhstp.ac.at
 	https://github.com/try2codesecure/ShellMS
 	
     This program is free software: you can redistribute it and/or modify
@@ -84,26 +82,14 @@ public class sendSMS extends Service {
 				}
 				// search for valid telephone number
 				valid = isNumberValid(contact);
+				
+				// otherwise search for valid contact names in database
 				if (!valid)	{
 					if (DEBUG)	{
-						Log.d(TAG, "not valid");
+						Log.d(TAG, "Error: Can't validate mobile number: " + contact);
+						Log.d(TAG, "try searching in contacts database ...");
 					}
-					val_num = makeNumberValid(contact);
-					if (val_num != null)	{
-						if (DEBUG)	{
-							Log.d(TAG, "val_num != null");
-						}
-						valid = true;
-						contact = val_num;
-					} else	{
-						valid = false;
-						if (DEBUG)	{
-							Log.d(TAG, "Error: Can't validate mobile number: " + contact);
-						}
-					}
-				}
-				if (!valid)	{
-					// otherwise search for valid contact names in database
+					
 					val_num = getNumberfromContact(contact, DEBUG);
 					if (val_num != null)	{
 						contact = val_num;
@@ -151,9 +137,11 @@ public class sendSMS extends Service {
 		if (contact == null)	{
 			return null;
 		}
-		String number = null;
-		number = PhoneNumberUtils.formatNumber(contact);
-		Boolean valid = isNumberValid(number);
+		String number = PhoneNumberUtils.normalizeNumber(contact);
+		if (DEBUG)	{
+			Log.e(TAG, "corrected number: " + number );
+		}
+		boolean valid = isNumberValid(number);
 		if (valid)	{
 			return number;
 		}
@@ -203,13 +191,22 @@ public class sendSMS extends Service {
 	    	valid = isNumberValid(result);
 	    }
 		if (!valid)	{
+			if (debugging)	{
+            	Log.d(TAG, "number seems invalid, try to resolve: " + result);
+            }
 			val_num = makeNumberValid(result);
 			if (val_num != null)	{
 				valid = true;
 				result = val_num;
+				if (debugging)	{
+	            	Log.d(TAG, "return modified number: " + result);
+	            }
 			}
 		}
 	    if (valid)	{
+	    	if (debugging)	{
+            	Log.d(TAG, "return number: " + result);
+            }
 	    	return result;
 	    } else	{
 	    	return null;

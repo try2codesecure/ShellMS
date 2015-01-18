@@ -42,6 +42,11 @@ Templates:
 
 Changelog:
 
+v1.3 (20150118)
+ * updated target version to 21
+ * removed deprecated "PhoneNumberUtils.formatNumber" function.
+ * phone number validation optimized
+
 v1.2 (20131107)
  * disabled the delivery reports for sent sms - it produces costs for some providers.
 
@@ -55,7 +60,6 @@ v1.0 (20130425)
 License: GPLv3+
 
     ShellMS - Android Debug Bridge Shell SMS Application
-    Copyright (C) 2013 by Rainer
     https://github.com/try2codesecure/ShellMS
 	
     This program is free software: you can redistribute it and/or modify
