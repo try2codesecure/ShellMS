@@ -37,23 +37,23 @@ import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Data;
 
 public class sendSMS extends Service {    
-	  
+
 	private static final String TAG = "ShellMS_Service_sendSMS";
 	private static final String TELEPHON_NUMBER_FIELD_NAME = "address";
     private static final String MESSAGE_BODY_FIELD_NAME = "body";
     private static final Uri SENT_MSGS_CONTET_PROVIDER = Uri.parse("content://sms/sent");
-	boolean DEBUG = false;	// debug mode, display additional output, sends no sms.
-	
+	private boolean DEBUG = false;	// debug mode, display additional output, sends no sms.
+
 	// This is the start function for the service.
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		boolean SECRET = false;	// for secret mode => dont't save sent sms to sent folder.
 		String contact = null;
-		String val_num = null;	// validated Number
+		String val_num;	// validated Number
 		String msg = null;		// message
 		boolean valid = false;	// for user input validation
 		int check = 0;			// getExtras check counter
-		
+
 		// extract and validate the extra strings from the service start
 		Bundle extras = intent.getExtras();
 		if ( extras != null ) {
@@ -82,14 +82,14 @@ public class sendSMS extends Service {
 				}
 				// search for valid telephone number
 				valid = isNumberValid(contact);
-				
+
 				// otherwise search for valid contact names in database
 				if (!valid)	{
 					if (DEBUG)	{
 						Log.d(TAG, "Error: Can't validate mobile number: " + contact);
 						Log.d(TAG, "try searching in contacts database ...");
 					}
-					
+
 					val_num = getNumberfromContact(contact, DEBUG);
 					if (val_num != null)	{
 						contact = val_num;
@@ -128,11 +128,8 @@ public class sendSMS extends Service {
 		}
 		boolean valid1 = PhoneNumberUtils.isGlobalPhoneNumber(contact);
 		boolean valid2 = PhoneNumberUtils.isWellFormedSmsAddress(contact);
-		if ((valid1 == true) && (valid2 == true))	{
-			return true;
-		}
-		return false;
-	}
+        return (valid1) && (valid2);
+    }
 	private String makeNumberValid(String contact)	{
 		if (contact == null)	{
 			return null;
@@ -147,23 +144,23 @@ public class sendSMS extends Service {
 		}
 		return null;
 	}
-	
+
 	// This function searches for an mobile phone entry for the contact
 	private String getNumberfromContact(String contact, Boolean debugging)	{
 		ContentResolver cr = getContentResolver();
 		String result = null;
 		boolean valid = false;	
 		String val_num = null;
-		int contact_id = 0;
+		int contact_id;
         // Cursor1 search for valid Database Entries who matches the contact name
 		Uri uri = ContactsContract.Contacts.CONTENT_URI;
 		String[] projection = new String[]{	ContactsContract.Contacts._ID, ContactsContract.Contacts.DISPLAY_NAME, ContactsContract.Contacts.HAS_PHONE_NUMBER };
 		String selection = ContactsContract.Contacts.DISPLAY_NAME + "=?";
 		String[] selectionArgs = new String[]{String.valueOf(contact)};
-		String sortOrder = null;
-		Cursor cursor1 = cr.query(uri, projection, selection, selectionArgs, sortOrder);
-	
-	    if(cursor1.moveToFirst()){
+		Cursor cursor1 = cr.query(uri, projection, selection, selectionArgs, null);
+
+        assert cursor1 != null;
+        if(cursor1.moveToFirst()){
 	    	if(cursor1.getInt(cursor1.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)) == 1){
 	    		contact_id = cursor1.getInt(cursor1.getColumnIndex(ContactsContract.Contacts._ID));
 	    		if (debugging)	{
@@ -176,8 +173,9 @@ public class sendSMS extends Service {
 	    		String[] selectionArgs2 = new String[]{ String.valueOf(contact_id), Phone.CONTENT_ITEM_TYPE };
 	    		String sortOrder2 = Data.IS_PRIMARY + " desc"; 	
 	        	Cursor cursor2 = cr.query(uri2, projection2, selection2, selectionArgs2, sortOrder2);
-	            
-	        	if(cursor2.moveToFirst()){
+
+                assert cursor2 != null;
+                if(cursor2.moveToFirst()){
 	                result = cursor2.getString(cursor2.getColumnIndex(Phone.NUMBER));
 	        		if (debugging)	{
 	                	Log.d(TAG, "C2 found number: " + result);
@@ -212,7 +210,7 @@ public class sendSMS extends Service {
 	    	return null;
 	    }
 	}
-	
+
 	// This function sends the sms with the SMSManager
 	private void sendsms(final String phoneNumber, final String message, final Boolean AddtoSent)	{
 		try {
@@ -222,7 +220,7 @@ public class sendSMS extends Service {
 	        
 	    	SmsManager sms = SmsManager.getDefault();
 	        ArrayList<String> msgparts = sms.divideMessage(message);
-	    	ArrayList<PendingIntent> sentPendingIntents = new ArrayList<PendingIntent>();
+	    	ArrayList<PendingIntent> sentPendingIntents = new ArrayList<>();
 	    	int msgcount = msgparts.size();
 
 	    	for (int i = 0; i < msgcount; i++) {
@@ -248,8 +246,5 @@ public class sendSMS extends Service {
         contentResolver.insert(SENT_MSGS_CONTET_PROVIDER, sentSms);
 	}
 	@Override
-	public IBinder onBind(Intent intent) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public IBinder onBind(Intent intent) { return null;	}
 }
