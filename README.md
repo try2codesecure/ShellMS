@@ -42,6 +42,11 @@ Templates:
 
 Changelog:
 
+v1.4 (20180523)
+ * updated target version to 27
+ * updated minimum version to 21
+ * code cleanup
+
 v1.3 (20150118)
  * updated target version to 21
  * removed deprecated "PhoneNumberUtils.formatNumber" function.
