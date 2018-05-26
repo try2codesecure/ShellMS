@@ -42,6 +42,9 @@ Templates:
 
 Changelog:
 
+v1.5 (20180526)
+ * gradle build structure & cleanup
+
 v1.4 (20180523)
  * updated target version to 27
  * updated minimum version to 21

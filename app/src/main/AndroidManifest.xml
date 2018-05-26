@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.shellms"
+    android:versionCode="6"
+    android:versionName="1.5"
+    android:installLocation="auto" >
+
+    <uses-permission android:name="android.permission.SEND_SMS" />
+	<uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+	<uses-permission android:name="android.permission.READ_CONTACTS" />
+    
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="27" />
+    
+    <application
+            android:allowBackup="true"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme"
+            android:logo="@drawable/ic_launcher"
+            android:name="ShellMS" >
+        <activity
+            android:name=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service
+            android:enabled="true"
+            android:name=".sendSMS"
+            android:exported="true" >
+        </service>
+    </application>
+</manifest>

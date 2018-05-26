@@ -1,0 +1,5 @@
+.idea
+local.properties
+out
+*.iml
+import-summary.txt

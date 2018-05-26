@@ -42,14 +42,14 @@ public class sendSMS extends Service {
 	private static final String TELEPHON_NUMBER_FIELD_NAME = "address";
     private static final String MESSAGE_BODY_FIELD_NAME = "body";
     private static final Uri SENT_MSGS_CONTET_PROVIDER = Uri.parse("content://sms/sent");
-	private boolean DEBUG = false;	// debug mode, display additional output, sends no sms.
+	boolean DEBUG = false;	// debug mode, display additional output, sends no sms.
 
 	// This is the start function for the service.
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		boolean SECRET = false;	// for secret mode => dont't save sent sms to sent folder.
 		String contact = null;
-		String val_num;	// validated Number
+		String val_num = null;	// validated Number
 		String msg = null;		// message
 		boolean valid = false;	// for user input validation
 		int check = 0;			// getExtras check counter
@@ -149,9 +149,9 @@ public class sendSMS extends Service {
 	private String getNumberfromContact(String contact, Boolean debugging)	{
 		ContentResolver cr = getContentResolver();
 		String result = null;
-		boolean valid = false;	
+		boolean valid = false;
 		String val_num = null;
-		int contact_id;
+		int contact_id = 0;
         // Cursor1 search for valid Database Entries who matches the contact name
 		Uri uri = ContactsContract.Contacts.CONTENT_URI;
 		String[] projection = new String[]{	ContactsContract.Contacts._ID, ContactsContract.Contacts.DISPLAY_NAME, ContactsContract.Contacts.HAS_PHONE_NUMBER };
