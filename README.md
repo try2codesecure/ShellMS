@@ -1,4 +1,4 @@
-![ShellMS Logo](res/drawable-mdpi/ic_launcher.png "ShellMS") ShellMS 
+![ShellMS Logo](documentation/logo_small.png "ShellMS") ShellMS 
 =======
 
 ShellMS - Android Debug Bridge Shell SMS Application
@@ -7,7 +7,7 @@ ShellMS is the simplest and easiest ADB Shell Messaging Application.
 If you don't know what ADB or SDK is you definitely don't need this app.
 For the others it's useful tool to speed up messaging when you're working on your computer.
 
-![Screenshot](./stuff/screenshot.png "Screenshot")
+![Screenshot](documentation/screenshot.png "Screenshot")
 
 Download => APK is availible on F-Droid:
  * http://f-droid.org/repository/browse/?fdid=com.android.shellms
@@ -35,8 +35,8 @@ Used permissions:
  * android.permission.READ_CONTACTS => to get the names from the phone
 
 Templates:
- * simple shell "![template_sendsms.sh](template_sendsms.sh "template_sendsms.sh")"
- * for multiple contacts "![template_sendsms_multiple-contacts.sh](template_sendsms_multiple-contacts.sh "template_sendsms_multiple-contacts.sh")"
+ * simple shell "![template_sendsms.sh](documentation/template_sendsms.sh "template_sendsms.sh")"
+ * for multiple contacts "![template_sendsms_multiple-contacts.sh](documentation/template_sendsms_multiple-contacts.sh "template_sendsms_multiple-contacts.sh")"
  * if you need more scripts => https://github.com/fbreitwieser/sendsms-scripts
 	perl scripts with improved contacts querying and displays recent conversations (GPLv2), thanks to Florian Breitwieser
 
